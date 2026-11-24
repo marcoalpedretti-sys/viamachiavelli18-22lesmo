@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Via Macchiavelli 22 | Appartamento 120mq | Grimaldi Immobiliare Arcore</title>
+  <title>Via Machiavelli 22 | Appartamento 120mq | Grimaldi Immobiliare Arcore</title>
   <meta name="description" content="Esclusivo appartamento quadrilocale 120mq ristrutturato 2026, terrazzo, box auto, riscaldamento a pavimento. € 320.000 – Grimaldi Immobiliare Arcore." />
 
   <!-- Google Fonts -->
@@ -817,6 +817,37 @@
     }
 
     /* ═══════════════════════════════════════════════
+       PRIMA / DOPO (tendina interattiva)
+    ═══════════════════════════════════════════════ */
+    #prima-dopo {
+      padding: 6rem 0;
+      background: var(--black);
+    }
+    .pd-intro {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 2.5rem;
+    }
+    .pd-frame {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 6px;
+      border: 1px solid var(--gold-border);
+      border-radius: 18px;
+      box-shadow: var(--glow);
+    }
+    #pd-iurygf{position:relative;width:100%;aspect-ratio:1600/1000;overflow:hidden;border-radius:12px;touch-action:none;user-select:none;-webkit-user-select:none;background:#111}
+    #pd-iurygf img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none;max-width:none}
+    #pd-iurygf .d,#pd-iurygf .d>*{position:absolute;pointer-events:none}
+    #pd-iurygf .d{inset:0}
+    #pd-iurygf .c{position:absolute;top:14px;font:600 0.62rem/1 var(--font-body);letter-spacing:0.22em;text-transform:uppercase;background:rgba(10,10,10,.75);color:var(--gold);border:1px solid var(--gold-border);backdrop-filter:blur(6px);padding:8px 14px;border-radius:99px;pointer-events:none;transition:opacity .2s}
+    #pd-iurygf .l{left:14px}#pd-iurygf .r{right:14px}
+    #pd-iurygf .k{width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--black);display:grid;place-items:center;transform:translate(-50%,-50%);box-shadow:0 4px 18px rgba(0,0,0,.5);font:700 16px/1 system-ui,sans-serif}
+    #pd-iurygf:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+
+    /* ═══════════════════════════════════════════════
        FORM CONTATTO
     ═══════════════════════════════════════════════ */
     #contatto {
@@ -1168,6 +1199,161 @@
     .fab-whatsapp svg { width: 26px; height: 26px; color: #fff; }
 
     /* ═══════════════════════════════════════════════
+       GALLERIA A SCHERMO INTERO (lightbox)
+    ═══════════════════════════════════════════════ */
+    #hero { cursor: zoom-in; }
+    #hero a, #hero button { cursor: pointer; }
+
+    .hero-gallery-hint {
+      position: absolute;
+      top: 88px; left: 50%; transform: translateX(-50%);
+      z-index: 4;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.6rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(10,10,10,0.55);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--gold-border);
+      padding: 0.45rem 0.9rem;
+      border-radius: 30px;
+      pointer-events: none;
+    }
+    .hero-gallery-hint svg { width: 13px; height: 13px; }
+
+    .lightbox {
+      position: fixed; inset: 0;
+      z-index: 5000;
+      background: rgba(5,5,5,0.97);
+      display: none;
+      flex-direction: column;
+    }
+    .lightbox.open { display: flex; }
+
+    .lb-top {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 1.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      flex-wrap: wrap;
+    }
+    .lb-tabs { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .lb-tab {
+      font-family: var(--font-body);
+      font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text-secondary);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.45rem 0.9rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+    }
+    .lb-tab:hover { color: var(--gold); border-color: var(--gold-border); }
+    .lb-tab.active { color: var(--black); background: var(--gold); border-color: var(--gold); }
+    .lb-tab[hidden] { display: none; }
+
+    .lb-info { display: flex; align-items: center; gap: 1.2rem; }
+    .lb-counter {
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.2em; color: var(--gold);
+    }
+    .lb-caption {
+      font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .lb-close {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-border);
+      background: transparent;
+      color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .lb-close:hover { background: var(--gold-dim); }
+    .lb-close svg { width: 18px; height: 18px; }
+
+    .lb-stage {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem 4.5rem;
+    }
+    .lb-stage img {
+      width: auto; height: auto;
+      max-width: 100%; max-height: 100%;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      user-select: none;
+      animation: lbFade 0.35s ease;
+    }
+    .lb-stage img.is-plan { background: #fff; padding: 12px; }
+    @keyframes lbFade { from { opacity: 0; } to { opacity: 1; } }
+
+    .lb-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-border);
+      background: rgba(10,10,10,0.6);
+      color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition);
+      z-index: 2;
+    }
+    .lb-arrow:hover { background: var(--gold-dim); border-color: var(--gold); }
+    .lb-arrow svg { width: 20px; height: 20px; }
+    .lb-arrow.prev { left: 1rem; }
+    .lb-arrow.next { right: 1rem; }
+
+    .lb-thumbs {
+      display: flex; gap: 6px;
+      overflow-x: auto;
+      padding: 0.8rem 1.2rem 1rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold-border) transparent;
+    }
+    .lb-thumb {
+      flex: 0 0 auto;
+      width: 84px; height: 58px;
+      border-radius: 3px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      opacity: 0.45;
+      cursor: pointer;
+      padding: 0;
+      background: var(--surface-3);
+      transition: opacity 0.2s, border-color 0.2s;
+      position: relative;
+    }
+    .lb-thumb:hover { opacity: 0.8; }
+    .lb-thumb.active { opacity: 1; border-color: var(--gold); }
+    .lb-thumb.is-plan img { object-fit: contain; background: #fff; }
+    .lb-thumb-tag {
+      position: absolute; left: 3px; bottom: 3px;
+      font-size: 0.5rem; font-weight: 700; letter-spacing: 0.1em;
+      background: rgba(10,10,10,0.75); color: var(--gold);
+      padding: 1px 4px; border-radius: 2px;
+    }
+
+    @media (max-width: 600px) {
+      .lb-stage { padding: 0.5rem; }
+      .lb-arrow { width: 40px; height: 40px; }
+      .lb-arrow.prev { left: 0.4rem; }
+      .lb-arrow.next { right: 0.4rem; }
+      .lb-caption { display: none; }
+      .lb-thumb { width: 64px; height: 46px; }
+      .hero-gallery-hint { top: 80px; }
+    }
+
+    /* ═══════════════════════════════════════════════
        RESPONSIVE — TABLET
     ═══════════════════════════════════════════════ */
     @media (max-width: 900px) {
@@ -1281,7 +1467,7 @@
       <h1 class="hero-title display-title">
         Un appartamento<br><em>da vivere</em>
       </h1>
-      <p class="hero-address">Via Macchiavelli, 22</p>
+      <p class="hero-address">Via Machiavelli, 22</p>
 
       <div class="hero-price-block">
         <span class="hero-price-label">Prezzo di vendita</span>
@@ -1310,7 +1496,11 @@
 
     <!-- Indicatori posizione -->
     <div class="slide-dots" id="slideDots" aria-label="Naviga tra le foto"></div>
-    <div class="slide-counter"><span class="current" id="slideCurrentNum">1</span> / <span id="slideTotalNum">8</span></div>
+    <div class="slide-counter"><span class="current" id="slideCurrentNum">1</span> / <span id="slideTotalNum">55</span></div>
+    <div class="hero-gallery-hint" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+      Clicca per la galleria completa
+    </div>
 
   </section>
 
@@ -1442,7 +1632,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
                 Indirizzo
               </span>
-              <span class="spec-val">Via Macchiavelli, 22</span>
+              <span class="spec-val">Via Machiavelli, 22</span>
             </div>
 
             <div class="spec-row" role="listitem">
@@ -1663,7 +1853,7 @@
         <!-- Right text -->
         <article class="descr-text reveal d1">
           <p>
-            Immagina di rientrare a casa nel tardo pomeriggio, quando il sole di settembre filtra obliquo dalle ampie finestre esposte a Sud-Ovest. La luce cambia, si fa dorata, e avvolge ogni stanza con calore. <strong>Via Macchiavelli 22</strong> non è solo un indirizzo: è il punto esatto in cui il comfort abitativo si incontra con l'eleganza discreta di un'abitazione integralmente rinnovata.
+            Immagina di rientrare a casa nel tardo pomeriggio, quando il sole di settembre filtra obliquo dalle ampie finestre esposte a Sud-Ovest. La luce cambia, si fa dorata, e avvolge ogni stanza con calore. <strong>Via Machiavelli 22</strong> non è solo un indirizzo: è il punto esatto in cui il comfort abitativo si incontra con l'eleganza discreta di un'abitazione integralmente rinnovata.
           </p>
           <p>
             Situato al piano terra, l'appartamento si sviluppa su <strong>120 metri quadrati</strong> ripensati da zero nel 2026. I materiali scelti parlano di durata e bellezza: pavimenti in gres porcellanato a effetto legno, infissi a taglio termico con doppio vetro, impianto di riscaldamento <strong>a pavimento</strong> che garantisce temperature uniformi senza sprechi e senza il fastidioso rumore dei radiatori.
@@ -1683,6 +1873,31 @@
           </div>
         </article>
 
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       PRIMA / DOPO — tendina interattiva
+       Per cambiare le immagini modifica i due src qui sotto:
+       class="t" = PRIMA, class="b" = DOPO
+  ══════════════════════════════════════════════ -->
+  <section id="prima-dopo" aria-labelledby="pd-title">
+    <div class="section-wrapper">
+      <p class="section-label reveal" style="text-align:center;">La ristrutturazione</p>
+      <div class="gold-rule reveal" style="margin: 1rem auto 0.5rem;"></div>
+      <h2 id="pd-title" class="display-title reveal" style="font-size: clamp(2rem,4vw,3rem); font-weight:300; text-align:center; margin-bottom: 0.8rem;">
+        Prima <em style="color:var(--gold-light)">&amp;</em> Dopo
+      </h2>
+      <p class="pd-intro reveal">Trascina il cursore per scoprire la trasformazione dell'appartamento.</p>
+
+      <div class="pd-frame reveal">
+        <!-- Tendina prima/dopo interattiva - stile: verticale -->
+        <div id="pd-iurygf" class="pd-tendina" role="slider" tabindex="0" aria-label="Confronto Prima / Dopo" aria-valuemin="0" aria-valuemax="100">
+          <img class="b" src="Foto/002.jpg" alt="Dopo la ristrutturazione"><img class="t" src="Foto/001.jpg" alt="Prima della ristrutturazione"><div class="d"></div>
+          <span class="c l">Prima</span><span class="c r">Dopo</span>
+        </div>
       </div>
     </div>
   </section>
@@ -1740,7 +1955,7 @@
             </div>
           </div>
 
-          <a href="https://wa.me/393472442598?text=Buongiorno%20Maria%2C%20ho%20visto%20l'annuncio%20di%20Via%20Macchiavelli%2022%20(rif.%202026-001)%20e%20vorrei%20ricevere%20maggiori%20informazioni." target="_blank" rel="noopener" class="btn-whatsapp" aria-label="Contatta su WhatsApp">
+          <a href="https://wa.me/393472442598?text=Buongiorno%20Maria%2C%20ho%20visto%20l'annuncio%20di%20Via%20Machiavelli%2022%20(rif.%202026-001)%20e%20vorrei%20ricevere%20maggiori%20informazioni." target="_blank" rel="noopener" class="btn-whatsapp" aria-label="Contatta su WhatsApp">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
             Scrivi su WhatsApp
           </a>
@@ -1846,8 +2061,38 @@
     </div>
   </footer>
 
+  <!-- ══════════════════════════════════════════════
+       GALLERIA A SCHERMO INTERO
+  ══════════════════════════════════════════════ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galleria a schermo intero">
+    <div class="lb-top">
+      <div class="lb-tabs" id="lbTabs">
+        <button class="lb-tab" data-cat="foto">Foto</button>
+        <button class="lb-tab" data-cat="gif" hidden>Video tour</button>
+        <button class="lb-tab" data-cat="plan" hidden>Planimetrie</button>
+      </div>
+      <div class="lb-info">
+        <span class="lb-caption" id="lbCaption"></span>
+        <span class="lb-counter" id="lbCounter">1 / 1</span>
+        <button class="lb-close" id="lbClose" aria-label="Chiudi galleria">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="lb-stage" id="lbStage">
+      <button class="lb-arrow prev" id="lbPrev" aria-label="Precedente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <img id="lbImg" alt="" />
+      <button class="lb-arrow next" id="lbNext" aria-label="Successiva">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+    <div class="lb-thumbs" id="lbThumbs"></div>
+  </div>
+
   <!-- Floating WhatsApp button -->
-  <a href="https://wa.me/393472442598?text=Buongiorno%20Maria%2C%20ho%20visto%20l'annuncio%20di%20Via%20Macchiavelli%2022%20(rif.%202026-001)%20e%20vorrei%20ricevere%20maggiori%20informazioni."
+  <a href="https://wa.me/393472442598?text=Buongiorno%20Maria%2C%20ho%20visto%20l'annuncio%20di%20Via%20Machiavelli%2022%20(rif.%202026-001)%20e%20vorrei%20ricevere%20maggiori%20informazioni."
      target="_blank" rel="noopener"
      class="fab-whatsapp"
      aria-label="Contatta su WhatsApp">
@@ -1902,7 +2147,7 @@
         slide.className = 'slide' + (num === PHOTO_FIRST ? ' active' : '');
 
         const img = document.createElement('img');
-        img.alt = 'Appartamento Via Macchiavelli 22 - foto ' + num;
+        img.alt = 'Appartamento Via Machiavelli 22 - foto ' + num;
         img.decoding = 'async';
         let extIdx = 0;
         img.onerror = () => {
@@ -1972,11 +2217,189 @@
 
     // Keyboard navigation
     document.addEventListener('keydown', e => {
+      if (lbIsOpen()) return; // con la galleria aperta comandano le sue frecce
       if (e.key === 'ArrowLeft')  prevSlide();
       if (e.key === 'ArrowRight') nextSlide();
     });
 
     initPhotos();
+
+    // ─────────────────────────────────────────────
+    // GALLERIA A SCHERMO INTERO
+    // Allegati nella cartella "allegati":
+    //   gif001.gif … gif011.gif   (video tour animati)
+    //   pl001 … pl004             (planimetrie: .jpg, .png, ecc.)
+    // ─────────────────────────────────────────────
+    const EXTRA_FOLDER = 'allegati';
+    const GIF_COUNT    = 11;
+    const PLAN_COUNT   = 4;
+    const GIF_EXT  = ['gif', 'GIF'];
+    const PLAN_EXT = ['jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'webp', 'gif'];
+
+    const CAT_LABEL = { foto: 'Foto', gif: 'Video tour', plan: 'Planimetria' };
+    let extraGifs  = [];
+    let extraPlans = [];
+    let lbItems = [];
+    let lbIndex = 0;
+
+    function probe(base, exts) {
+      return new Promise(resolve => {
+        let k = 0;
+        const next = () => {
+          if (k >= exts.length) return resolve(null);
+          const url = `${base}.${exts[k++]}`;
+          const t = new Image();
+          t.onload = () => resolve(url);
+          t.onerror = next;
+          t.src = url;
+        };
+        next();
+      });
+    }
+
+    async function loadExtras() {
+      const pad = n => String(n).padStart(3, '0');
+      const gifs  = await Promise.all(Array.from({ length: GIF_COUNT },  (_, i) => probe(`${EXTRA_FOLDER}/gif${pad(i + 1)}`, GIF_EXT)));
+      const plans = await Promise.all(Array.from({ length: PLAN_COUNT }, (_, i) => probe(`${EXTRA_FOLDER}/pl${pad(i + 1)}`,  PLAN_EXT)));
+      extraGifs  = gifs.filter(Boolean);
+      extraPlans = plans.filter(Boolean);
+      if (lbIsOpen()) refreshLightbox(); // se la galleria è già aperta, aggiungili
+    }
+
+    function collectItems() {
+      const photos = validSlides().map(s => s.querySelector('img'))
+        .filter(img => img.complete && img.naturalWidth > 0)
+        .map(img => ({ src: img.currentSrc || img.src, cat: 'foto' }));
+      return [
+        ...photos,
+        ...extraGifs.map(src  => ({ src, cat: 'gif'  })),
+        ...extraPlans.map(src => ({ src, cat: 'plan' })),
+      ];
+    }
+
+    const lb       = document.getElementById('lightbox');
+    const lbImg    = document.getElementById('lbImg');
+    const lbThumbs = document.getElementById('lbThumbs');
+
+    function lbIsOpen() { return lb && lb.classList.contains('open'); }
+
+    function renderThumbs() {
+      lbThumbs.innerHTML = '';
+      const counters = { foto: 0, gif: 0, plan: 0 };
+      lbItems.forEach((it, i) => {
+        counters[it.cat]++;
+        const b = document.createElement('button');
+        b.className = 'lb-thumb' + (it.cat === 'plan' ? ' is-plan' : '');
+        b.setAttribute('aria-label', `${CAT_LABEL[it.cat]} ${counters[it.cat]}`);
+        const im = document.createElement('img');
+        im.src = it.src; im.alt = ''; im.loading = 'lazy';
+        b.appendChild(im);
+        if (it.cat !== 'foto') {
+          const tag = document.createElement('span');
+          tag.className = 'lb-thumb-tag';
+          tag.textContent = it.cat === 'gif' ? 'GIF' : 'PLAN';
+          b.appendChild(tag);
+        }
+        b.addEventListener('click', () => lbShow(i));
+        lbThumbs.appendChild(b);
+      });
+      document.querySelector('.lb-tab[data-cat="gif"]').hidden  = !extraGifs.length;
+      document.querySelector('.lb-tab[data-cat="plan"]').hidden = !extraPlans.length;
+    }
+
+    function lbShow(i) {
+      if (!lbItems.length) return;
+      lbIndex = (i + lbItems.length) % lbItems.length;
+      const it = lbItems[lbIndex];
+
+      // stesso numero d'ordine all'interno della categoria
+      const sameCat = lbItems.filter(x => x.cat === it.cat);
+      const posInCat = sameCat.indexOf(it) + 1;
+
+      lbImg.style.animation = 'none'; void lbImg.offsetWidth; lbImg.style.animation = '';
+      lbImg.src = it.src;
+      lbImg.alt = `${CAT_LABEL[it.cat]} ${posInCat} – Via Machiavelli 22`;
+      lbImg.classList.toggle('is-plan', it.cat === 'plan');
+
+      document.getElementById('lbCounter').textContent = `${lbIndex + 1} / ${lbItems.length}`;
+      document.getElementById('lbCaption').textContent = `${CAT_LABEL[it.cat]} ${posInCat} di ${sameCat.length}`;
+
+      document.querySelectorAll('.lb-tab').forEach(t => t.classList.toggle('active', t.dataset.cat === it.cat));
+      document.querySelectorAll('.lb-thumb').forEach((t, k) => t.classList.toggle('active', k === lbIndex));
+      const active = lbThumbs.children[lbIndex];
+      if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+
+    function refreshLightbox() {
+      const current = lbItems[lbIndex];
+      lbItems = collectItems();
+      renderThumbs();
+      const keep = current ? lbItems.findIndex(x => x.src === current.src) : 0;
+      lbShow(Math.max(0, keep));
+    }
+
+    function openLightbox() {
+      lbItems = collectItems();
+      if (!lbItems.length) return;
+      renderThumbs();
+      // parte dalla foto che si sta guardando nella testata
+      const heroImg = document.querySelector('.slide.active img');
+      const start = heroImg ? lbItems.findIndex(x => x.src === (heroImg.currentSrc || heroImg.src)) : 0;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      clearInterval(slideshowTimer);
+      lbShow(Math.max(0, start));
+    }
+
+    function closeLightbox() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+      lbImg.removeAttribute('src');
+      resetTimer();
+    }
+
+    // Click sulla testata (esclusi pulsanti e link) → apre la galleria
+    document.getElementById('hero').addEventListener('click', e => {
+      if (e.target.closest('a, button')) return;
+      openLightbox();
+    });
+
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    document.getElementById('lbPrev').addEventListener('click', () => lbShow(lbIndex - 1));
+    document.getElementById('lbNext').addEventListener('click', () => lbShow(lbIndex + 1));
+
+    // Click sullo sfondo scuro chiude
+    document.getElementById('lbStage').addEventListener('click', e => {
+      if (e.target.id === 'lbStage') closeLightbox();
+    });
+
+    // Schede Foto / Video tour / Planimetrie → salta al primo elemento
+    document.querySelectorAll('.lb-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const i = lbItems.findIndex(x => x.cat === tab.dataset.cat);
+        if (i >= 0) lbShow(i);
+      });
+    });
+
+    document.addEventListener('keydown', e => {
+      if (!lbIsOpen()) return;
+      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'ArrowLeft')  lbShow(lbIndex - 1);
+      if (e.key === 'ArrowRight') lbShow(lbIndex + 1);
+    });
+
+    // Swipe su smartphone
+    let lbTouchX = 0;
+    document.getElementById('lbStage').addEventListener('touchstart', e => {
+      lbTouchX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    document.getElementById('lbStage').addEventListener('touchend', e => {
+      const d = lbTouchX - e.changedTouches[0].clientX;
+      if (Math.abs(d) > 40) lbShow(lbIndex + (d > 0 ? 1 : -1));
+    }, { passive: true });
+
+    // Cerca GIF e planimetrie dopo che la pagina è caricata
+    window.addEventListener('load', loadExtras);
 
     // ─────────────────────────────────────────────
     // NAVBAR scroll effect
